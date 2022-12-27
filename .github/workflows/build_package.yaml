@@ -1,0 +1,23 @@
+name: Package build
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      - name: Setup GNU Fortran
+        uses: modflowpy/install-gfortran-action@v1
+      - name: Setup miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          miniconda-version: "latest"
+          auto-update-conda: true
+      - name: Install conda-build
+        run: conda install conda-build -y
+      - name: Conda build hole2
+        run: conda build .
+      - name: Conda install local
+        run: conda install --use-local hole2 -y
+      - name: Find hole command
+        run: command -v ${CONDA}/bin/hole
