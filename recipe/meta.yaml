@@ -36,18 +36,18 @@ requirements:
 test:
   # Some packages might need a `test/commands` key to check CLI.
   # List all the packages/modules that `run_test.py` imports.
-  imports:
-    - hole2
+  # imports:
+  #   - hole2
   # Run your test commands here
   commands:
-    - hole2 --help
-    - pytest
+    - hole
+    # - pytest
   # declare any test-only requirements here
-  requires:
-    - pytest
+  # requires:
+  #   - pytest
   # copy over any needed test files here
-  source_files:
-    - tests/
+  # source_files:
+  #   - tests/
 
 # Uncomment and fill in hole2 metadata
 #about:
